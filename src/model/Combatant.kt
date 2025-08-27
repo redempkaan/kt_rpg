@@ -11,4 +11,6 @@ interface Combatant{
 
     fun descriptChar()
     fun listSkills()
+    fun useSkillById(skillId: Int, enemy: Combatant): Int
+    fun calculateDamage(enemy: Combatant): Int
 }
