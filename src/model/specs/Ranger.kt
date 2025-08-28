@@ -12,7 +12,7 @@ class Ranger (override val name: String, type: CharacterType = CharacterType.RAN
     override var defense = type.baseDefense
     override var skillMap = mutableMapOf<Int, (Combatant) -> Int>()
     override var skillNames = mutableMapOf<Int, String>()
-
+    // Adding skill function references and names to related lists
     init{
         skillMap[1] = ::multiShot
         skillNames[1] = "Multishot"
@@ -28,7 +28,7 @@ class Ranger (override val name: String, type: CharacterType = CharacterType.RAN
             println("$index. $name\n")
         }
     }
-
+    // Takes skillid and enemy as input and casts related skill to enemy
     override fun useSkillById(skillId: Int, enemy: Combatant): Int{
         val skill = skillMap[skillId]
         return skill!!.invoke(enemy)
@@ -41,7 +41,7 @@ class Ranger (override val name: String, type: CharacterType = CharacterType.RAN
         }
         return ((attack / 3) - (enemy.defense / 10)) * multiplier
     }
-
+    // Ranger's standard skill
     fun multiShot(enemy: Combatant): Int{
         var index: Int = 0
         var damage: Int = 0

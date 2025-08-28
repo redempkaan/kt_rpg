@@ -12,7 +12,7 @@ class Thief (override val name: String, type: CharacterType = CharacterType.THIE
     override var defense = type.baseDefense
     override var skillMap = mutableMapOf<Int, (Combatant) -> Int>()
     override var skillNames = mutableMapOf<Int, String>()
-
+    // Adding skill function references and names to related lists
     init{
         skillMap[1] = ::shadowStrike
         skillNames[1] = "Shadow Strike"
@@ -28,7 +28,7 @@ class Thief (override val name: String, type: CharacterType = CharacterType.THIE
             println("$index. $name\n")
         }
     }
-
+    // Takes skillid and enemy as input and casts related skill to enemy
     override fun useSkillById(skillId: Int, enemy: Combatant): Int{
         val skill = skillMap[skillId]
         return skill!!.invoke(enemy)
@@ -41,7 +41,7 @@ class Thief (override val name: String, type: CharacterType = CharacterType.THIE
         }
         return ((attack) - (enemy.defense / 10)) * multiplier
     }
-
+    // Thief's standard skill
     fun shadowStrike(enemy: Combatant): Int{
         var damage: Int
 

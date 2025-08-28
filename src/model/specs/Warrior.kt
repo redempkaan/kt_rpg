@@ -13,6 +13,7 @@ class Warrior (override val name: String, type: CharacterType = CharacterType.WA
     override var skillMap = mutableMapOf<Int, (Combatant) -> Int>()
     override var skillNames = mutableMapOf<Int, String>()
 
+    // Adding skill function references and names to related lists
     init{
         skillMap[1] = ::shieldSlam
         skillNames[1] = "Shield Slam"
@@ -28,7 +29,7 @@ class Warrior (override val name: String, type: CharacterType = CharacterType.WA
             println("$index. $name\n")
         }
     }
-
+    // Takes skillid and enemy as input and casts related skill to enemy
     override fun useSkillById(skillId: Int, enemy: Combatant): Int{
         val skill = skillMap[skillId]
         return skill!!.invoke(enemy)
@@ -41,7 +42,7 @@ class Warrior (override val name: String, type: CharacterType = CharacterType.WA
         }
         return (attack - (enemy.defense / 10)) * multiplier
     }
-
+    // Warrior's standard skill
     fun shieldSlam(enemy: Combatant): Int{
         val damage = calculateDamage(enemy)
 

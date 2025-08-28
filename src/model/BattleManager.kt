@@ -8,7 +8,7 @@ class BattleManager() {
 
         val indexC1: Int
         val indexC2: Int
-
+        //Listing combatant with their descriptions for user to select combatants
         combatantList.forEachIndexed {index, combatant ->
             println("\n${index + 1}) ${combatant.name}")
             combatant.descriptChar()
@@ -25,7 +25,7 @@ class BattleManager() {
         }
         println("\nEnter the id of the opponent to fight")
         indexC2 = readln().toInt() - 1
-
+        // Returns picked combatants
         return Pair(combatantList[indexC1], combatantList[indexC2])
 
 
@@ -41,7 +41,7 @@ class BattleManager() {
         var dealedDamage: Int
         var roundCounter: Int = 1
         var skillId: Int
-
+        // Combatants take turn by order and uses the selected skill (enemy automatically casts its first skill)
         println("THE DUEL BETWEEN ${combatant1.name} AND ${combatant2.name} BEGINS!")
         while((tempHp1 > 0) && (tempHp2 > 0)){
             if(roundCounter % 2 == 1){

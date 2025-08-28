@@ -10,7 +10,7 @@ class Boss(override val name: String, val type: BossType): Combatant {
     override var defense: Int = type.defense
     override var skillMap = mutableMapOf<Int, (Combatant) -> Int>()
     override var skillNames = mutableMapOf<Int, String>()
-
+    // Adding skill function references and names to related lists
     init{
         skillMap[1] = ::strike
         skillNames[1] = "Strike"
@@ -26,7 +26,7 @@ class Boss(override val name: String, val type: BossType): Combatant {
             println("$index. $name\n")
         }
     }
-
+    // Takes skillid and enemy as input and casts related skill to enemy
     override fun useSkillById(skillId: Int, enemy: Combatant): Int{
         val skill = skillMap[skillId]
         return skill!!.invoke(enemy)
@@ -35,7 +35,7 @@ class Boss(override val name: String, val type: BossType): Combatant {
     override fun calculateDamage(enemy: Combatant): Int{
         return (attack - (enemy.defense * 10 / 100))
     }
-
+    //Bosses' standard skill (uses calculateDamage function)
     fun strike(enemy: Combatant): Int{
         val damage = calculateDamage(enemy)
         println("$name STRIKES AT ${enemy.name} DEALING $damage DAMAGE!")

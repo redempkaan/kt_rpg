@@ -13,6 +13,7 @@ class Mage (override val name: String, type: CharacterType = CharacterType.MAGE)
     override var skillMap = mutableMapOf<Int, (Combatant) -> Int>()
     override var skillNames = mutableMapOf<Int, String>()
 
+    // Adding skill function references and names to related lists
     init{
         skillMap[1] = ::fireBall
         skillNames[1] = "Fireball"
@@ -28,7 +29,7 @@ class Mage (override val name: String, type: CharacterType = CharacterType.MAGE)
             println("$index. $name\n")
         }
     }
-
+    // Takes skillid and enemy as input and casts related skill to enemy
     override fun useSkillById(skillId: Int, enemy: Combatant): Int{
         val skill = skillMap[skillId]
         return skill!!.invoke(enemy)
@@ -41,7 +42,7 @@ class Mage (override val name: String, type: CharacterType = CharacterType.MAGE)
         }
         return (attack - (enemy.defense / 10)) * multiplier
     }
-
+    // Mage's standard skill
     fun fireBall(enemy: Combatant): Int{
         val damage = calculateDamage(enemy)
 

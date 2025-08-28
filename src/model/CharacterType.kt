@@ -1,6 +1,6 @@
 package src.model.characterType
 
-
+// Different base hp, attack, defense values for character classes
 enum class CharacterType(val baseHp: Int, val baseAtk: Int, val baseDefense: Int){
     WARRIOR(200, 45, 20),
     MAGE(120, 60, 10),

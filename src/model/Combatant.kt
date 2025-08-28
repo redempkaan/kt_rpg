@@ -1,5 +1,5 @@
 package src.model.characterType
-
+// Base combatant interface, character classes inherit this interface
 interface Combatant{
     val name: String
     var level: Int
